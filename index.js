@@ -4,10 +4,14 @@ const simpleDate = {
   month: Number = date.getMonth()+1, // add +1 because months start at 0 like any array
 }
 
+// document.getElementById('date').setAttribute("min", date.getFullYear + "-01-01");
+// document.getElementById('date').setAttribute("max", date.getFullYear + "-12-31");
+
 new Vue({
   el: '#header',
   data: {
-    title: simpleDate.month + '/' + simpleDate.day
+    title: simpleDate.month + '/' + simpleDate.day,
+    completeDate : date
   }
 })
 
