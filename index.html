@@ -18,14 +18,6 @@
     </script>
 </head>
 
-
-<!-- <div class="row">
-    <div class="col-lg-3">
-        Select another date :
-        <input type="date" class="form-control">
-        <input type="submit" class="form-control">
-    </div>
-</div> -->
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="header">
         <div class="collapse navbar-collapse" id="navbarText">
@@ -33,18 +25,15 @@
                 <li>
                     <h2>What happened today ?</h2>
                 </li>
-            <li class="nav-item">
-                <a href="#events" class="nav-link" >See the events</a>
-            </li>
-            <li class="nav-item">
-                    <a href="#births" class="nav-link" >See the births</a>
-            </li>
-            <li class="nav-item">
-                <a href="#deaths" class="nav-link" >See the deaths</a>
-            </li>
-            <li>
-                <a href="#" class="nav-link"></a>
-            </li>
+                <li class="nav-item">
+                    <a href="#events" class="nav-link">See the events</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#births" class="nav-link">See the births</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#deaths" class="nav-link">See the deaths</a>
+                </li>
             </ul>
             <span class="navbar-text">
                 <span v-bind:title="title">
@@ -52,19 +41,13 @@
                         On the {{title}}
                     </h2>
                 </span>
-                <!-- <span v-bind:completeDate="completeDate">
-                    Select another date :
-                    <input id="date" type="date" v-bind:max="completeDate.getfullYear" v-bind:value="completeDate">
-                    <button>Submit</button>
-                </span> -->
+                <input v-model="inputDate" type="date">
+                <button v-on:click="changeDate(inputDate)">Submit</button>
             </span>
         </div>
-
-            
     </nav>
 
     <div id="data">
-
         <div id="events">
             <h2> Events : </h2>
             <ul class="list-group-flush">
