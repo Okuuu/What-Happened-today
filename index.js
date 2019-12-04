@@ -1,26 +1,34 @@
 const date = new Date();
 const simpleDate = {
-  day: Number = date.getDate(),
-  month: Number = date.getMonth() + 1, // add +1 because months start at 0 like any array
-  year: Number = date.getFullYear()
+  day: date.getDate(),
+  month: date.getMonth() + 1, // add +1 because months start at 0 like any array
+  year: date.getFullYear()
+}
+
+
+function formatDate(integer) {
+  if(integer.toString().length < 2) {
+    return '0' + integer
+  } else {
+    return integer
+  }
 }
 
 const header = new Vue({
   el: '#header',
   data: {
-    title: simpleDate.month + '/' + simpleDate.day,
+    title: simpleDate.day + '/' + simpleDate.month,
     completeDate: date,
-    inputDate: simpleDate.year + '-' + simpleDate.month + '-' + simpleDate.day
+    inputDate: simpleDate.year + '-' + formatDate(simpleDate.month) + '-' + formatDate(simpleDate.day)
   },
   methods: {
     changeDate: function (inputDate) {
-
       const arrayDate = inputDate.split('-');
       const newDate = {
         day: parseInt(arrayDate[2]),
         month: parseInt(arrayDate[1])
       }
-      this.title = newDate.month + '/' + newDate.day;
+      this.title = newDate.day + '/' + newDate.month;
       events.getEvents(newDate.month, newDate.day);
     }
   }
