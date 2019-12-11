@@ -4,7 +4,10 @@ const simpleDate = {
   month: date.getMonth() + 1, // add +1 because months start at 0 like any array
   year: date.getFullYear()
 }
-
+const dateFormatOption = {
+  month: 'long',
+  day: '2-digit',
+}
 
 function formatDate(integer) {
   if (integer.toString().length < 2) {
@@ -14,28 +17,35 @@ function formatDate(integer) {
   }
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-  options = {};
-  var elems = document.querySelectorAll('.collapsible');
-  var instances = M.Collapsible.init(elems, options);
+document.addEventListener('DOMContentLoaded', function () {
+  const options = {};
+  const elems = document.querySelectorAll('.collapsible');
+  const instances = M.Collapsible.init(elems, options);
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+  const options = {format: 'mmmm dd'};
+  const elems = document.querySelectorAll('.datepicker');
+  const instances = M.Datepicker.init(elems, options);
 });
 
 const header = new Vue({
   el: '#header',
   data: {
-    title: simpleDate.day + '/' + simpleDate.month,
-    completeDate: date,
-    inputDate: simpleDate.year + '-' + formatDate(simpleDate.month) + '-' + formatDate(simpleDate.day)
+    inputDate: date.toLocaleDateString('en-EN', dateFormatOption)
   },
   methods: {
-    changeDate: function (inputDate) {
-      const arrayDate = inputDate.split('-');
+    changeDate: function () {
+      const date = new Date(this.inputDate);
+
       const newDate = {
-        day: parseInt(arrayDate[2]),
-        month: parseInt(arrayDate[1])
+        day: date.getDate(),
+        month: date.getMonth()+1
       }
-      this.title = newDate.day + '/' + newDate.month;
-      events.getEvents(newDate.month, newDate.day);
+
+      events.getEventsWithoutSliders(newDate.month, newDate.day);
+      births.getBirthsWithoutSliders(newDate.month, newDate.day);
+      deaths.getDeathsWithoutSliders(newDate.month, newDate.day);
     },
   }
 })
@@ -62,7 +72,14 @@ const events = new Vue({
           this.fullInfo = response.data.events,
           this.length = response.data.events.length,
           this.sliderInit()))
-
+    },
+    getEventsWithoutSliders(month, day) {
+      axios
+        .get('https://byabbe.se/on-this-day/' + month + '/' + day + '/events.json')
+        .then(response => (
+          this.info = response.data.events,
+          this.fullInfo = response.data.events,
+          this.length = response.data.events.length))
     },
     sliderInit() {
       const value = {
@@ -108,8 +125,6 @@ const events = new Vue({
   }
 })
 
-
-
 const births = new Vue({
   el: '#births',
   data() {
@@ -131,6 +146,14 @@ const births = new Vue({
           this.fullInfo = response.data.births,
           this.length = response.data.births.length,
           this.sliderInit()))
+    },
+    getBirthsWithoutSliders(month, day) {
+      axios
+        .get('https://byabbe.se/on-this-day/' + month + '/' + day + '/births.json')
+        .then(response => (
+          this.info = response.data.births,
+          this.fullInfo = response.data.births,
+          this.length = response.data.births.length))
     },
     sliderInit() {
       const value = {
@@ -181,7 +204,7 @@ const deaths = new Vue({
   data() {
     return {
       info: null,
-      fullInfo:null,
+      fullInfo: null,
       length: null
     }
   },
@@ -197,6 +220,14 @@ const deaths = new Vue({
           this.fullInfo = response.data.deaths,
           this.length = response.data.deaths.length,
           this.sliderInit()))
+    },
+    getDeathsWithoutSliders(month, day) {
+      axios
+        .get('https://byabbe.se/on-this-day/' + month + '/' + day + '/deaths.json')
+        .then(response => (
+          this.info = response.data.deaths,
+          this.fullInfo = response.data.deaths,
+          this.length = response.data.deaths.length))
     },
     sliderInit() {
       const value = {
@@ -240,4 +271,4 @@ const deaths = new Vue({
       this.length = this.info.length;
     }
   }
-})  
+})

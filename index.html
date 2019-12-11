@@ -12,10 +12,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!-- Materialize Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
+    <!-- WNumb -->
     <script src="https://unpkg.com/wnumb@1.1.0"></script>
-
+    <!-- noUISlider min js -->
     <script src="https://unpkg.com/nouislider@10.0.0/distribute/nouislider.min.js"></script>
+    <!-- noUISlider min css -->
     <link rel="stylesheet" href="https://unpkg.com/nouislider@10.0.0/distribute/nouislider.min.css">
 </head>
 
@@ -24,8 +25,11 @@
 
         <nav id="header">
             <div class="nav-wrapper">
-                <span class="brand-logo" v-bind:title="title">What happened on the {{title}} ?</span>
+                <span class="brand-logo">What happened on the {{inputDate}} ?</span>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li>
+                        <input v-model.lazy="inputDate" type="text" class="datepicker" @change="changeDate()">
+                    </li>
                     <li>
                         <a href="#events">See the events</a>
                     </li>
@@ -34,17 +38,6 @@
                     </li>
                     <li>
                         <a href="#deaths">See the deaths</a>
-                    </li>
-                    <li>
-                        <input v-model="inputDate" type="date">
-                        <!-- TODO: Use https://materializecss.com/pickers.html to update to a better version,
-                            but it doesn't seem to work, but this would allow a better UI, and the ability to
-                            choose the format to display-->
-                    </li>
-                    <li>
-                        <button v-on:click="changeDate(inputDate)" class="waves-effect waves-light btn">
-                            Change date !
-                        </button>
                     </li>
                 </ul>
 
