@@ -58,25 +58,30 @@
 
             <h2> Events : </h2>
 
-            <div v-if="length > 1">
-                There are {{length}} events in the database
-            </div>
-            <div v-else-if="length === 1">
-                There is {{length}} event in the database
-            </div>
-            <div v-else-if="length === 0">
-                There are no events in the database
-            </div>
-
             <div style="width: 95%;" id="sliderEvent" class="slider"></div>
 
-            <ul class="collection">
-                <li v-for="event in info" class="collection-item" v-if="event.wikipedia[0]">
-                    <strong>
-                        {{event.year}}
-                    </strong>
-                    -
-                    {{event.description}}
+            <ul class="collapsible">
+                <li>
+                    <div v-if="length > 1" class="collapsible-header">
+                        There are {{length}} events in the database
+                    </div>
+                    <div v-else-if="length === 1" class="collapsible-header">
+                        There is {{length}} event in the database
+                    </div>
+                    <div v-else-if="length === 0" class="collapsible-header">
+                        There are no events in the database
+                    </div>
+                    <div class="collapsible-body">
+                        <ul class="collection">
+                            <li v-for="event in info" class="collection-item" v-if="event.wikipedia[0]">
+                                <strong>
+                                    {{event.year}}
+                                </strong>
+                                -
+                                {{event.description}}
+                            </li>
+                        </ul>
+                    </div>
                 </li>
             </ul>
         </div>
@@ -84,59 +89,73 @@
         <div id="births">
             <h2> Births : </h2>
 
-            <div v-if="length > 1">
-                There are {{length}} births in the database
-            </div>
-            <div v-else-if="length === 1">
-                There is {{length}} birth in the database
-            </div>
-            <div v-else-if="length === 0">
-                There are no births in the database
-            </div>
+
 
             <div style="width: 95%;" id="sliderBirths" class="slider"></div>
 
-
-            <ul class="collection">
-                <li v-for="birth in info" class="collection-item">
-                    <a v-bind:href="birth.wikipedia[0].wikipedia" v-if="birth.wikipedia[0]" target="_blank">
-                        <strong>
-                            {{ birth.year }}
-                        </strong>
-                        -
-                        {{ birth.description }}
-                    </a>
+            <ul class="collapsible">
+                <li>
+                    <div v-if="length > 1" class="collapsible-header">
+                        There are {{length}} births in the database
+                    </div>
+                    <div v-else-if="length === 1" class="collapsible-header">
+                        There is {{length}} birth in the database
+                    </div>
+                    <div v-else-if="length === 0" class="collapsible-header">
+                        There are no births in the database
+                    </div>
+                    <div class="collapsible-body">
+                        <ul class="collection">
+                            <li v-for="birth in info" class="collection-item">
+                                <a v-bind:href="birth.wikipedia[0].wikipedia" v-if="birth.wikipedia[0]" target="_blank">
+                                    <strong>
+                                        {{ birth.year }}
+                                    </strong>
+                                    -
+                                    {{ birth.description }}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
             </ul>
+
         </div>
 
         <div id="deaths">
             <h2> Deaths : </h2>
 
-            <div v-if="length > 1">
-                There are {{length}} deaths in the database
-            </div>
-            <div v-else-if="length === 1">
-                There is {{length}} death in the database
-            </div>
-            <div v-else-if="length === 0">
-                There are no deaths in the database
-            </div>
+
 
             <div style="width: 95%;" id="sliderDeaths" class="slider"></div>
 
-
-            <ul class="collection">
-                <li v-for="death in info" class="collection-item">
-                    <a v-bind:href="death.wikipedia[0].wikipedia" v-if="death.wikipedia[0]" target="_blank">
-                        <strong>
-                            {{ death.year }}
-                        </strong>
-                        -
-                        {{ death.description }}
-                    </a>
+            <ul class="collapsible">
+                <li>
+                    <div v-if="length > 1" class="collapsible-header">
+                        There are {{length}} deaths in the database
+                    </div>
+                    <div v-else-if="length === 1" class="collapsible-header">
+                        There is {{length}} death in the database
+                    </div>
+                    <div v-else-if="length === 0" class="collapsible-header">
+                        There are no deaths in the database
+                    </div>
+                    <div class="collapsible-body">
+                        <ul class="collection">
+                            <li v-for="death in info" class="collection-item">
+                                <a v-bind:href="death.wikipedia[0].wikipedia" v-if="death.wikipedia[0]" target="_blank">
+                                    <strong>
+                                        {{ death.year }}
+                                    </strong>
+                                    -
+                                    {{ death.description }}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
             </ul>
+
         </div>
     </div>
     <script src="index.js"></script>

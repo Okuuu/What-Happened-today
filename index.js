@@ -14,6 +14,12 @@ function formatDate(integer) {
   }
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+  options = {};
+  var elems = document.querySelectorAll('.collapsible');
+  var instances = M.Collapsible.init(elems, options);
+});
+
 const header = new Vue({
   el: '#header',
   data: {
@@ -234,4 +240,4 @@ const deaths = new Vue({
       this.length = this.info.length;
     }
   }
-})
+})  
