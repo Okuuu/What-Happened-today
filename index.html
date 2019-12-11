@@ -12,6 +12,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!-- Materialize Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script src="https://unpkg.com/wnumb@1.1.0"></script>
+
+    <script src="https://unpkg.com/nouislider@10.0.0/distribute/nouislider.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/nouislider@10.0.0/distribute/nouislider.min.css">
 </head>
 
 <body>
@@ -47,11 +52,26 @@
         </nav>
     </div>
 
+
     <div id="data">
         <div id="events">
+
             <h2> Events : </h2>
+
+            <div v-if="length > 1">
+                There are {{length}} events in the database
+            </div>
+            <div v-else-if="length === 1">
+                There is {{length}} event in the database
+            </div>
+            <div v-else-if="length === 0">
+                There are no events in the database
+            </div>
+
+            <div style="width: 95%;" id="sliderEvent" class="slider"></div>
+
             <ul class="collection">
-                <li v-for="event in info" class="collection-item">
+                <li v-for="event in info" class="collection-item" v-if="event.wikipedia[0]">
                     <strong>
                         {{event.year}}
                     </strong>
@@ -63,9 +83,23 @@
 
         <div id="births">
             <h2> Births : </h2>
+
+            <div v-if="length > 1">
+                There are {{length}} births in the database
+            </div>
+            <div v-else-if="length === 1">
+                There is {{length}} birth in the database
+            </div>
+            <div v-else-if="length === 0">
+                There are no births in the database
+            </div>
+
+            <div style="width: 95%;" id="sliderBirths" class="slider"></div>
+
+
             <ul class="collection">
                 <li v-for="birth in info" class="collection-item">
-                    <a v-bind:href="birth.wikipedia[0].wikipedia" target="_blank">
+                    <a v-bind:href="birth.wikipedia[0].wikipedia" v-if="birth.wikipedia[0]" target="_blank">
                         <strong>
                             {{ birth.year }}
                         </strong>
@@ -78,9 +112,23 @@
 
         <div id="deaths">
             <h2> Deaths : </h2>
+
+            <div v-if="length > 1">
+                There are {{length}} deaths in the database
+            </div>
+            <div v-else-if="length === 1">
+                There is {{length}} death in the database
+            </div>
+            <div v-else-if="length === 0">
+                There are no deaths in the database
+            </div>
+
+            <div style="width: 95%;" id="sliderDeaths" class="slider"></div>
+
+
             <ul class="collection">
                 <li v-for="death in info" class="collection-item">
-                    <a v-bind:href="death.wikipedia[0].wikipedia" target="_blank">
+                    <a v-bind:href="death.wikipedia[0].wikipedia" v-if="death.wikipedia[0]" target="_blank">
                         <strong>
                             {{ death.year }}
                         </strong>
