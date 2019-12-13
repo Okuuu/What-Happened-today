@@ -1,5 +1,10 @@
 #header ul {
-    margin-right: 1%; 
+    margin-right: 1%;
+    /* This is needed because we do shit with materialize ¯\_(ツ)_/¯ */
+}
+
+.brand-logo {
+    margin-left: 1%;
     /* This is needed because we do shit with materialize ¯\_(ツ)_/¯ */
 }
 
@@ -8,7 +13,7 @@
     padding-right: 1%;
 }
 
-a:hover{
+a:hover {
     text-decoration: underline;
 }
 
