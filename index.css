@@ -1,25 +1,25 @@
 #header ul {
-    margin-right: 1%;
-    /* This is needed because we do shit with materialize ¯\_(ツ)_/¯ */
+  margin-right: 1%;
+  /* This is needed because we do shit with materialize ¯\_(ツ)_/¯ */
 }
 
 .brand-logo {
-    margin-left: 1%;
-    /* This is needed because we do shit with materialize ¯\_(ツ)_/¯ */
+  margin-left: 1%;
+  /* This is needed because we do shit with materialize ¯\_(ツ)_/¯ */
 }
 
 #data {
-    padding-left: 1%;
-    padding-right: 1%;
+  padding-left: 1%;
+  padding-right: 1%;
 }
 
 a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 /* Hovering noUiSlider style */
 .noUi-target {
-    margin: auto;
-    margin-bottom: 3em;
-    margin-top: 3em;
+  margin: auto;
+  margin-bottom: 3em;
+  margin-top: 3em;
 }
