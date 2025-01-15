@@ -24,7 +24,6 @@
 
 <body>
     <div class="navbar-fixed">
-
         <nav id="header">
             <div class="nav-wrapper">
                 <span class="brand-logo">What happened on the {{inputDate}} ?</span>
@@ -38,7 +37,6 @@
                         </a>
                     </li>
                 </ul>
-
             </div>
         </nav>
     </div>
@@ -46,11 +44,8 @@
 
     <div id="data">
         <div id="events">
-
             <h2> Events : </h2>
-
             <div style="width: 95%;" id="sliderEvent" class="slider"></div>
-
             <ul class="collapsible">
                 <li>
                     <div v-if="length > 1" class="collapsible-header">
@@ -79,11 +74,7 @@
 
         <div id="births">
             <h2> Births : </h2>
-
-
-
             <div style="width: 95%;" id="sliderBirths" class="slider"></div>
-
             <ul class="collapsible">
                 <li>
                     <div v-if="length > 1" class="collapsible-header">
@@ -115,11 +106,7 @@
 
         <div id="deaths">
             <h2> Deaths : </h2>
-
-
-
             <div style="width: 95%;" id="sliderDeaths" class="slider"></div>
-
             <ul class="collapsible">
                 <li>
                     <div v-if="length > 1" class="collapsible-header">
@@ -146,7 +133,6 @@
                     </div>
                 </li>
             </ul>
-
         </div>
     </div>
     <script src="index.js"></script>

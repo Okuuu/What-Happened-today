@@ -83,7 +83,7 @@ const events = new Vue({
     },
     sliderInit() {
       const value = {
-        min: this.info[0].year,
+        min: Number.isInteger(parseInt(this.info[0].year, 10)) ? this.info[0].year : '-' + this.info[0].year.slice(3),
         max: this.info[this.info.length - 1].year
       };
 
@@ -157,7 +157,7 @@ const births = new Vue({
     },
     sliderInit() {
       const value = {
-        min: this.info[0].year,
+        min: Number.isInteger(parseInt(this.info[0].year, 10)) ? this.info[0].year : '-' + this.info[0].year.slice(3),
         max: this.info[this.info.length - 1].year
       };
 
@@ -231,7 +231,7 @@ const deaths = new Vue({
     },
     sliderInit() {
       const value = {
-        min: this.info[0].year,
+        min: Number.isInteger(parseInt(this.info[0].year, 10)) ? this.info[0].year : '-' + this.info[0].year.slice(3),
         max: this.info[this.info.length - 1].year
       };
 
